@@ -41,76 +41,79 @@
         .nav-links a:hover { color: var(--accent); }
 
         .btn-nav-ws {
-            background: #25D366; color: white; padding: 8px 20px;
+            background: #0081c9; color: white; padding: 8px 20px;
             border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 13px;
         }
 
-        /* HERO */
+        /* HERO - INICIO */
         .hero {
             height: 100vh; display: flex; align-items: center; padding: 0 10%;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('fondo.png.png');
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('fondo.png.png');
             background-size: cover; background-position: center;
         }
 
         .hero-content { max-width: 800px; }
-        .tagline { color: var(--accent); letter-spacing: 5px; font-size: 14px; margin-bottom: 20px; font-weight: bold; }
-        h1 { font-size: clamp(40px, 8vw, 90px); line-height: 1; margin-bottom: 20px; text-transform: uppercase; }
-        .hero-content p { font-size: 18px; color: var(--text-gray); margin-bottom: 30px; max-width: 600px; }
+        .hero-content h1 { font-size: clamp(40px, 8vw, 80px); line-height: 1; margin-bottom: 20px; text-transform: uppercase; font-weight: 900; }
+        .hero-content p { font-size: 18px; color: var(--text-gray); max-width: 550px; }
 
-        /* BOTÓN CELESTE CON MÁS ESPACIO */
+        /* BOTÓN CELESTE AJUSTADO */
         .cta-main {
             background: var(--primary); color: white; padding: 18px 35px;
             border-radius: 50px; text-decoration: none; font-weight: bold;
             display: inline-flex; align-items: center; gap: 15px; transition: 0.3s;
-            margin-top: 40px; /* Aquí le damos el "bajito" que pediste */
+            margin-top: 50px; /* Más abajo como pediste */
         }
-        .cta-main:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,129,201,0.4); }
+        .cta-main:hover { transform: scale(1.05); background: var(--accent); color: black; }
 
-        /* SECCIONES GENERALES */
-        section { padding: 100px 8%; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 40px; text-transform: uppercase; margin-bottom: 10px; }
-        .section-title p { color: var(--accent); letter-spacing: 2px; font-weight: bold; }
+        /* PORTAFOLIO - BENTO GRID */
+        section { padding: 80px 8%; }
+        .section-tag { color: var(--accent); letter-spacing: 3px; font-weight: bold; text-align: center; display: block; margin-bottom: 10px; font-size: 14px; }
+        .section-title { text-align: center; font-size: 45px; margin-bottom: 50px; font-weight: 800; }
 
-        /* SERVICIOS */
-        .pricing-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 300px);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        .price-card {
-            background: var(--card-bg); padding: 40px 30px; border-radius: 24px;
-            border: 1px solid rgba(255,255,255,0.05); position: relative;
+
+        .bento-item {
+            position: relative;
+            border-radius: 30px; /* Esquinas muy redondeadas como el ejemplo */
+            overflow: hidden;
+            background: #1f2937;
+            cursor: pointer;
         }
-        .price-card.featured { border: 2px solid var(--accent); }
-        .price-card h4 { font-size: 22px; margin-bottom: 15px; }
-        .price-card .price { font-size: 30px; font-weight: 800; color: var(--accent); margin-bottom: 20px; }
-        .price-card ul { list-style: none; margin-bottom: 30px; font-size: 14px; color: var(--text-gray); }
-        .price-card ul li { margin-bottom: 10px; }
-        .price-card ul li i { color: var(--accent); margin-right: 8px; }
 
-        /* PORTAFOLIO */
-        .portfolio-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;
+        /* Tamaños desiguales */
+        .bento-item.tall { grid-row: span 2; } /* Item largo (InkaBrew) */
+        .bento-item.wide { grid-column: span 1; } 
+
+        .bento-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .bento-item:hover img { transform: scale(1.1); }
+
+        /* Overlay con texto inferior */
+        .bento-overlay {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
+            transition: 0.3s;
         }
-        .port-item {
-            height: 300px; background: #1f2937; border-radius: 20px; overflow: hidden;
-            position: relative; cursor: pointer;
-        }
-        .port-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 0.5s; }
-        .port-item:hover img { opacity: 1; transform: scale(1.05); }
 
-        /* NOSOTROS */
-        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .bento-overlay h3 { font-size: 20px; margin-bottom: 5px; font-weight: 700; }
+        .bento-overlay span { font-size: 11px; text-transform: uppercase; color: var(--accent); font-weight: bold; letter-spacing: 1px; }
 
-        /* TESTIMONIOS */
-        .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .test-card { background: rgba(255,255,255,0.03); padding: 30px; border-radius: 20px; font-style: italic; }
-
-        footer { text-align: center; padding: 40px; color: var(--text-gray); font-size: 13px; }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .about-content { grid-template-columns: 1fr; }
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .bento-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+            .bento-item.tall { grid-row: span 1; height: 400px; }
+            .hero-content h1 { font-size: 50px; }
         }
     </style>
 </head>
@@ -126,112 +129,79 @@
             <a href="#testimonios">Testimonios</a>
             <a href="#contacto">Contacto</a>
         </div>
-        <a href="https://wa.me/51971050584" class="btn-nav-ws"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="https://wa.me/51971050584" class="btn-nav-ws">WhatsApp</a>
     </nav>
 
     <section class="hero" id="inicio">
         <div class="hero-content">
-            <div class="tagline">AGENCIA DE CRECIMIENTO</div>
-            <h1>ESCALAMOS TU MARCA AL SIGUIENTE NIVEL</h1>
-            <p>Estrategias de contenido y branding diseñadas para dominar el mercado digital.</p>
+            <h1>IMPÚLSATE</h1>
+            <p style="font-size: 32px; font-weight: bold; color: white; margin-bottom: 10px;">Marketing en Lima</p>
+            <p>Solicita tu propuesta hoy mismo y empieza a maximizar tu ROI con una agencia de marketing en Lima.</p>
             <a href="https://wa.me/51971050584" class="cta-main">
-                EMPEZAR PROYECTO <i class="fas fa-arrow-right"></i>
+                <i class="fab fa-whatsapp"></i> CONTACTAR AHORA ↗
             </a>
         </div>
     </section>
 
-    <section id="servicios">
-        <div class="section-title">
-            <p>PLANES A TU MEDIDA</p>
-            <h2>Nuestros Servicios</h2>
-        </div>
-        <div class="pricing-grid">
-            <div class="price-card">
-                <h4>Paquete Contenido</h4>
-                <div class="price">S/ 1,200</div>
-                <ul>
-                    <li><i class="fas fa-check"></i> 12 Reels mensuales</li>
-                    <li><i class="fas fa-check"></i> Edición Profesional</li>
-                    <li><i class="fas fa-check"></i> Guiones Estratégicos</li>
-                </ul>
-                <a href="https://wa.me/51971050584" class="btn-nav-ws" style="display:block; text-align:center;">Consultar</a>
+    <section id="portafolio">
+        <span class="section-tag">PORTAFOLIO</span>
+        <h2 class="section-title">Proyectos que transforman marcas</h2>
+
+        <div class="bento-grid">
+            <div class="bento-item tall">
+                <img src="1.png" alt="InkaBrew Café">
+                <div class="bento-overlay">
+                    <h3>InkaBrew Café</h3>
+                    <span>PAQUETE CONTENIDO</span>
+                </div>
             </div>
-            <div class="price-card featured">
-                <h4>Paquete Full</h4>
-                <div class="price">S/ 2,800</div>
-                <ul>
-                    <li><i class="fas fa-check"></i> Identidad Completa</li>
-                    <li><i class="fas fa-check"></i> 16 Reels mensuales</li>
-                    <li><i class="fas fa-check"></i> Gestión de Redes</li>
-                </ul>
-                <a href="https://wa.me/51971050584" class="btn-nav-ws" style="display:block; text-align:center;">Consultar</a>
+
+            <div class="bento-item">
+                <img src="fondo.png.png" alt="VitalFit Gym">
+                <div class="bento-overlay">
+                    <h3>VitalFit Gym</h3>
+                    <span>PAQUETE FULL</span>
+                </div>
             </div>
-            <div class="price-card">
-                <h4>Páginas Web</h4>
-                <div class="price">Desde S/ 2,000</div>
-                <ul>
-                    <li><i class="fas fa-check"></i> Diseño Responsive</li>
-                    <li><i class="fas fa-check"></i> Optimización SEO</li>
-                    <li><i class="fas fa-check"></i> Hosting Incluido</li>
-                </ul>
-                <a href="https://wa.me/51971050584" class="btn-nav-ws" style="display:block; text-align:center;">Consultar</a>
+
+            <div class="bento-item">
+                <img src="1.png" alt="GreenRoots Organics">
+                <div class="bento-overlay">
+                    <h3>GreenRoots Organics</h3>
+                    <span>PAQUETE IDENTIDAD</span>
+                </div>
+            </div>
+
+            <div class="bento-item">
+                <img src="fondo.png.png" alt="Lima Dental Care">
+                <div class="bento-overlay">
+                    <h3>Lima Dental Care</h3>
+                    <span>PÁGINA WEB</span>
+                </div>
+            </div>
+
+            <div class="bento-item tall">
+                <img src="1.png" alt="UrbanStyle Boutique">
+                <div class="bento-overlay">
+                    <h3>UrbanStyle Boutique</h3>
+                    <span>PAQUETE CONTENIDO</span>
+                </div>
+            </div>
+            
+            <div class="bento-item">
+                <img src="fondo.png.png" alt="CasaMar Restaurant">
+                <div class="bento-overlay">
+                    <h3>CasaMar Restaurant</h3>
+                    <span>PAQUETE FULL</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="portafolio" style="background: rgba(255,255,255,0.01);">
-        <div class="section-title">
-            <p>NUESTRO TRABAJO</p>
-            <h2>Casos de Éxito</h2>
-        </div>
-        <div class="portfolio-grid">
-            <div class="port-item"><img src="1.png" alt="Proyecto Axiom"></div>
-            <div class="port-item"><img src="fondo.png.png" alt="Producción"></div>
-            <div class="port-item"><img src="1.png" alt="Marketing"></div>
-        </div>
+    <section id="contacto" style="text-align: center; background: #070b14;">
+        <h2 style="font-size: 35px; margin-bottom: 20px;">¿LISTO PARA EMPEZAR?</h2>
+        <a href="https://wa.me/51971050584" class="cta-main" style="margin-top: 10px;">ESCRIBIR POR WHATSAPP</a>
     </section>
-
-    <section id="nosotros">
-        <div class="about-content">
-            <div>
-                <p style="color:var(--accent); font-weight:bold;">QUIÉNES SOMOS</p>
-                <h2 style="font-size:35px; margin: 15px 0;">Impulsando la presencia digital en Lima</h2>
-                <p style="color:var(--text-gray);">Somos un equipo apasionado por el marketing de resultados. En Axiom Agency, transformamos marcas convencionales en referentes digitales mediante contenido de alto impacto y diseño estratégico.</p>
-            </div>
-            <div style="background: var(--card-bg); height: 300px; border-radius: 20px; display: flex; align-items: center; justify-content: center;">
-                <i class="fas fa-rocket" style="font-size: 100px; color: var(--primary);"></i>
-            </div>
-        </div>
-    </section>
-
-    <section id="testimonios" style="background: rgba(255,255,255,0.01);">
-        <div class="section-title">
-            <p>CLIENTES</p>
-            <h2>Testimonios</h2>
-        </div>
-        <div class="test-grid">
-            <div class="test-card">
-                <p>"La calidad de los reels superó mis expectativas. Logramos duplicar nuestro alcance en un mes."</p>
-                <br><strong>- Jorge L.</strong>
-            </div>
-            <div class="test-card">
-                <p>"Excelente servicio de branding. Mi marca ahora se ve profesional y atrae mejores clientes."</p>
-                <br><strong>- Maria P.</strong>
-            </div>
-        </div>
-    </section>
-
-    <section id="contacto" style="text-align: center;">
-        <h2 style="font-size: 40px; margin-bottom: 20px;">¿LISTO PARA COMENZAR?</h2>
-        <p style="color: var(--text-gray); margin-bottom: 40px;">Hablemos sobre cómo podemos escalar tu negocio hoy mismo.</p>
-        <a href="https://wa.me/51971050584" class="cta-main" style="background: #25D366;">
-            CONTACTAR POR WHATSAPP <i class="fab fa-whatsapp"></i>
-        </a>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Axiom Agency Lima. Todos los derechos reservados.</p>
-    </footer>
 
 </body>
 </html>
