@@ -11,6 +11,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth; /* Hace que el salto a las secciones sea suave */
         }
 
         body {
@@ -36,8 +37,10 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 6%;
-            z-index: 10;
-            background: rgba(3, 7, 18, 0.6);
+            position: fixed; /* Mantiene el menú arriba siempre */
+            width: 100%;
+            z-index: 100;
+            background: rgba(3, 7, 18, 0.8);
             backdrop-filter: blur(10px);
         }
 
@@ -58,20 +61,27 @@
             font-size: 13px;
             text-transform: uppercase;
             font-weight: 600;
+            transition: 0.3s;
         }
 
-        .nav-links a:hover, .nav-links a.active {
+        .nav-links a:hover {
             color: #40CFFF;
         }
 
         .btn-top-whatsapp {
-            background: #0081c9;
+            background: #25D366; /* Color oficial WhatsApp */
             color: white;
             padding: 10px 25px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .btn-top-whatsapp:hover {
+            background: #128C7E;
+            transform: scale(1.05);
         }
 
         .main-content {
@@ -124,7 +134,6 @@
             max-width: 550px;
         }
 
-        /* Estilos del Botón con soporte de transformaciones dinámicas */
         .cta-button {
             background: #0081c9;
             color: white;
@@ -137,36 +146,15 @@
             align-items: center;
             gap: 20px;
             font-size: 18px;
-            /* Usamos transition solo para el retorno (mouseleave) manejado por JS, o una muy rápida para suavizar */
-            transition: transform 0.1s ease-out, box-shadow 0.3s, background-color 0.3s;
-            position: relative;
+            transition: 0.3s;
             overflow: hidden;
-            display: inline-flex; /* Asegura un comportamiento de bloque en línea correcto */
-            cursor: pointer;
+            position: relative;
         }
 
         .cta-button:hover {
             box-shadow: 0 10px 30px rgba(0, 129, 201, 0.5);
-            background-color: #00a0f0;
-        }
-
-        /* Efecto de brillo pasando por el botón */
-        .cta-button::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
-            transform: skewX(-25deg);
-            animation: shine 4s infinite;
-        }
-
-        @keyframes shine {
-            0% { left: -100%; }
-            20% { left: 150%; }
-            100% { left: 150%; }
+            background: #00a0f0;
+            transform: translateY(-3px);
         }
 
         .whatsapp-icon-circle {
@@ -179,34 +167,38 @@
             justify-content: center;
         }
 
-        .scroll-down {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            color: #4b5563;
-            font-size: 11px;
-            letter-spacing: 3px;
+        /* Secciones de relleno para que los links funcionen */
+        section {
+            padding: 100px 10%;
+            min-height: 60vh;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        section h3 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #40CFFF;
         }
     </style>
 </head>
 <body>
 
-    <div class="hero">
+    <div class="hero" id="inicio">
         <nav>
             <div class="logo-container">
                 <img src="AXIOM AGENCY.jpg" alt="Axiom Logo" class="logo-img">
             </div>
             <div class="nav-links">
-                <a href="#" class="active">Inicio</a>
-                <a href="#">Servicios</a>
-                <a href="#">Portafolio</a>
-                <a href="#">Nosotros</a>
-                <a href="#">Testimonios</a>
-                <a href="#">Contacto</a>
+                <a href="#inicio">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#portafolio">Portafolio</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#testimonios">Testimonios</a>
+                <a href="#contacto">Contacto</a>
             </div>
-            <a href="#" class="btn-top-whatsapp">WhatsApp</a>
+            <a href="https://wa.me/51971050584?text=Hola%20Axiom,%20vengo%20de%20la%20web%20y%20quiero%20información" target="_blank" class="btn-top-whatsapp">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
         </nav>
 
         <div class="main-content">
@@ -217,46 +209,39 @@
                 Solicita tu propuesta hoy mismo y empieza a maximizar tu ROI con una agencia de marketing en Lima.
             </p>
             
-            <a href="#" class="cta-button" id="btn-magnet">
+            <a href="https://wa.me/51971050584?text=Hola,%20deseo%20una%20propuesta%20de%20marketing%20para%20mi%20negocio" target="_blank" class="cta-button">
                 <div class="whatsapp-icon-circle">
                     <i class="fab fa-whatsapp"></i>
                 </div>
                 CONTACTAR AHORA ↗
             </a>
         </div>
-
-        <div class="scroll-down">
-            SCROLL <br>
-            <i class="fas fa-chevron-down"></i>
-        </div>
     </div>
 
-    <script>
-        const btn = document.getElementById('btn-magnet');
+    <section id="servicios">
+        <h3>Nuestros Servicios</h3>
+        <p>Estrategia Digital, Manejo de Redes, Publicidad Pagada y más.</p>
+    </section>
 
-        if (btn) {
-            btn.addEventListener('mousemove', (e) => {
-                const rect = btn.getBoundingClientRect();
-                // Distancia desde el cursor al centro del botón
-                const x = e.clientX - (rect.left + rect.width / 2);
-                const y = e.clientY - (rect.top + rect.height / 2);
+    <section id="portafolio">
+        <h3>Portafolio</h3>
+        <p>Proyectos destacados de nuestra agencia en Lima.</p>
+    </section>
 
-                // Multiplicador para controlar la fuerza de atracción (0.3 es suave y notable)
-                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-            });
+    <section id="nosotros">
+        <h3>Sobre Nosotros</h3>
+        <p>Somos expertos impulsando marcas locales al siguiente nivel.</p>
+    </section>
 
-            btn.addEventListener('mouseleave', () => {
-                // Regresa suavemente a su posición original
-                btn.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-                btn.style.transform = 'translate(0px, 0px)';
-                
-                // Limpia la transición de retorno para que vuelva a ser interactivo al instante
-                setTimeout(() => {
-                    btn.style.transition = 'transform 0.1s ease-out, box-shadow 0.3s, background-color 0.3s';
-                }, 500);
-            });
-        }
-    </script>
+    <section id="testimonios">
+        <h3>Testimonios</h3>
+        <p>Lo que nuestros clientes dicen de Axiom.</p>
+    </section>
+
+    <section id="contacto">
+        <h3>Contacto</h3>
+        <p>¿Listo para empezar? Escríbenos.</p>
+    </section>
 
 </body>
 </html>
