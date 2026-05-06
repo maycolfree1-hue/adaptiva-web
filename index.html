@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agencia de Marketing - Impúlsate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #050505;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section con imagen de fondo oscura */
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=2070'); /* Imagen de oficina/estudio */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navegación */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 8%;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 24px;
+            letter-spacing: 2px;
+        }
+
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #0099ff;
+        }
+
+        .btn-whatsapp-top {
+            background: #0099ff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Contenido Central */
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 8%;
+            max-width: 800px;
+        }
+
+        .sub-tag {
+            color: #0099ff;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 85px;
+            line-height: 1;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: 900;
+        }
+
+        h2 {
+            font-size: 45px;
+            font-weight: 400;
+            margin-bottom: 25px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #bbb;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            max-width: 500px;
+        }
+
+        /* Botón Principal estilo la imagen */
+        .cta-button {
+            background: #0091d5;
+            color: white;
+            width: fit-content;
+            padding: 18px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 18px;
+            transition: 0.3s transform;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            background: #00a8f3;
+        }
+
+        .cta-button i {
+            font-size: 24px;
+        }
+
+        /* Scroll decorativo */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <nav>
+            <div class="logo">AXIOM <br><span style="font-size: 10px; color: #0099ff;">MARKETING AGENCY</span></div>
+            <div class="nav-links">
+                <a href="#">Inicio</a>
+                <a href="#">Servicios</a>
+                <a href="#">Portafolio</a>
+                <a href="#">Nosotros</a>
+                <a href="#">Testimonios</a>
+                <a href="#">Contacto</a>
+            </div>
+            <a href="#" class="btn-whatsapp-top">WhatsApp</a>
+        </nav>
+
+        <div class="content">
+            <div class="sub-tag">— AGENCIA DE</div>
+            <h1>IMPÚLSATE</h1>
+            <h2>Marketing en Lima</h2>
+            <p>Solicita tu propuesta hoy mismo y empieza a maximizar tu ROI con una agencia de marketing en Lima.</p>
+            
+            <a href="#" class="cta-button">
+                <i class="fab fa-whatsapp"></i>
+                CONTACTAR AHORA ↗
+            </a>
+        </div>
+
+        <div class="scroll-indicator">
+            SCROLL <br> ↓
+        </div>
+    </div>
+
+</body>
+</html>
