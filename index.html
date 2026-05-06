@@ -14,6 +14,24 @@
             --text-gray: #9ca3af;
         }
 
+        /* ANIMACIONES CSS */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulse-accent {
+            0% { box-shadow: 0 0 0 0 rgba(64, 207, 255, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(64, 207, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(64, 207, 255, 0); }
+        }
+
         * {
             margin: 0; padding: 0; box-sizing: border-box;
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -30,7 +48,10 @@
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .logo-img { height: 45px; width: auto; }
+        .logo-img { 
+            height: 45px; width: auto; 
+            animation: float 4s ease-in-out infinite; /* Logo flotando */
+        }
 
         .nav-links { display: flex; gap: 25px; }
         .nav-links a {
@@ -40,11 +61,6 @@
         }
         .nav-links a:hover { color: var(--accent); }
 
-        .btn-nav-ws {
-            background: #25D366; color: white; padding: 8px 20px;
-            border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 13px;
-        }
-
         /* HERO */
         .hero {
             height: 100vh; display: flex; align-items: center; padding: 0 10%;
@@ -52,26 +68,29 @@
             background-size: cover; background-position: center;
         }
 
-        .hero-content { max-width: 800px; }
+        .hero-content { 
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out; /* Entrada suave */
+        }
+        
         .tagline { color: var(--accent); letter-spacing: 5px; font-size: 14px; margin-bottom: 20px; font-weight: bold; }
         h1 { font-size: clamp(40px, 8vw, 90px); line-height: 1; margin-bottom: 20px; text-transform: uppercase; }
-        .hero-content p { font-size: 18px; color: var(--text-gray); margin-bottom: 40px; max-width: 600px; }
 
-        /* BOTONES */
+        /* BOTÓN PRINCIPAL PULSANTE */
         .cta-main {
             background: var(--primary); color: white; padding: 18px 35px;
             border-radius: 50px; text-decoration: none; font-weight: bold;
-            display: inline-flex; align-items: center; gap: 15px; transition: 0.3s;
+            display: inline-flex; align-items: center; gap: 15px; 
+            transition: 0.3s;
+            animation: pulse-accent 2s infinite; /* El botón "late" */
         }
-        .cta-main:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,129,201,0.4); }
+        .cta-main:hover { transform: scale(1.05); }
 
-        /* SECCIONES GENERALES */
+        /* SECCIONES */
         section { padding: 100px 8%; }
         .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 40px; text-transform: uppercase; margin-bottom: 10px; }
-        .section-title p { color: var(--accent); letter-spacing: 2px; font-weight: bold; }
-
-        /* SERVICIOS - PRICING */
+        
+        /* TARJETAS DE PRECIOS CON HOVER */
         .pricing-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px; margin-top: 50px;
@@ -82,39 +101,48 @@
             border: 1px solid rgba(255,255,255,0.05); transition: 0.4s;
             position: relative; display: flex; flex-direction: column;
         }
-        .price-card.featured { border: 2px solid var(--accent); transform: scale(1.05); z-index: 2; }
-        .badge {
-            background: var(--accent); color: var(--bg); padding: 5px 15px;
-            border-radius: 20px; font-size: 10px; font-weight: 900;
-            position: absolute; top: 20px; right: 20px;
+
+        .price-card:hover {
+            transform: translateY(-15px); /* Se eleva al pasar el mouse */
+            background: #1a2233;
+            border-color: var(--accent);
         }
 
-        .price-card h4 { font-size: 24px; margin-bottom: 10px; }
+        .price-card.featured { 
+            border: 2px solid var(--accent); 
+            transform: scale(1.05); 
+            background: rgba(64, 207, 255, 0.05);
+        }
+
+        .price-card.featured:hover { transform: scale(1.08) translateY(-10px); }
+
         .price-card .price { font-size: 32px; font-weight: 900; margin: 20px 0; color: var(--accent); }
-        .price-card ul { list-style: none; margin-bottom: 30px; flex-grow: 1; }
-        .price-card ul li { margin-bottom: 12px; color: var(--text-gray); font-size: 14px; }
+        .price-card ul li { margin-bottom: 12px; color: var(--text-gray); font-size: 14px; display: flex; align-items: center; }
         .price-card ul li i { color: var(--accent); margin-right: 10px; }
 
         .btn-price {
             display: block; text-align: center; padding: 12px; border-radius: 12px;
             border: 1px solid var(--primary); color: white; text-decoration: none; font-weight: bold;
+            transition: 0.3s;
         }
-        .price-card.featured .btn-price { background: var(--primary); }
+        .btn-price:hover { background: var(--primary); }
 
-        /* NOSOTROS & PORTAFOLIO */
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        /* PORTAFOLIO CON ZOOM */
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .port-item { height: 250px; background: #1f2937; border-radius: 15px; overflow: hidden; position: relative; }
-        .port-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
-
-        /* TESTIMONIOS */
-        .test-card { background: rgba(255,255,255,0.03); padding: 30px; border-radius: 20px; border-left: 4px solid var(--accent); }
+        .port-item { 
+            height: 250px; background: #1f2937; border-radius: 15px; 
+            overflow: hidden; cursor: pointer;
+        }
+        .port-item img { 
+            width: 100%; height: 100%; object-fit: cover; opacity: 0.7; 
+            transition: 0.5s;
+        }
+        .port-item:hover img { transform: scale(1.1); opacity: 1; }
 
         footer { text-align: center; padding: 50px; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-gray); font-size: 14px; }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .about-grid { grid-template-columns: 1fr; }
             .price-card.featured { transform: scale(1); }
         }
     </style>
@@ -131,7 +159,7 @@
             <a href="#testimonios">Testimonios</a>
             <a href="#contacto">Contacto</a>
         </div>
-        <a href="https://wa.me/51971050584" class="btn-nav-ws"><i class="fab fa-whatsapp"></i> 971 050 584</a>
+        <a href="https://wa.me/51971050584" class="btn-nav-ws" style="background:#25D366; color:white; padding:8px 20px; border-radius:50px; text-decoration:none; font-weight:bold;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </nav>
 
     <section class="hero" id="inicio">
@@ -153,123 +181,57 @@
         
         <div class="pricing-grid">
             <div class="price-card">
-                <span class="badge">POPULAR</span>
                 <h4>Paquete Contenido</h4>
-                <p style="font-size: 12px; color: var(--text-gray);">Reels profesionales para TikTok e Instagram.</p>
                 <div class="price">S/ 1,200<span>/mes</span></div>
-                <ul>
-                    <li><i class="fas fa-check"></i> 12 Reels mensuales</li>
-                    <li><i class="fas fa-check"></i> Grabación y edición pro</li>
-                    <li><i class="fas fa-check"></i> Calendario de publicación</li>
-                    <li><i class="fas fa-check"></i> Copywriting de captions</li>
-                    <li><i class="fas fa-check"></i> Análisis de métricas</li>
+                <ul style="list-style:none;">
+                    <li><i class="fas fa-check-circle"></i> 12 Reels mensuales</li>
+                    <li><i class="fas fa-check-circle"></i> Grabación y edición pro</li>
+                    <li><i class="fas fa-check-circle"></i> Copywriting de captions</li>
                 </ul>
+                <br>
                 <a href="https://wa.me/51971050584?text=Me%20interesa%20el%20Paquete%20Contenido" class="btn-price">Consultar paquete</a>
             </div>
 
-            <div class="price-card">
-                <span class="badge">BRANDING</span>
-                <h4>Paquete Identidad</h4>
-                <p style="font-size: 12px; color: var(--text-gray);">Diseño integral de marca y visuales.</p>
-                <div class="price">S/ 1,500<span>/único</span></div>
-                <ul>
-                    <li><i class="fas fa-check"></i> Logo e Isotipo personalizado</li>
-                    <li><i class="fas fa-check"></i> Paleta de colores corp.</li>
-                    <li><i class="fas fa-check"></i> Mockups de marca (20 pcs)</li>
-                    <li><i class="fas fa-check"></i> Manual de marca básico</li>
-                    <li><i class="fas fa-check"></i> Todos los formatos (AI, PNG)</li>
-                </ul>
-                <a href="https://wa.me/51971050584?text=Me%20interesa%20el%20Paquete%20Identidad" class="btn-price">Consultar paquete</a>
-            </div>
-
             <div class="price-card featured">
-                <span class="badge" style="background: white;">RECOMENDADO</span>
+                <span style="background:var(--accent); color:black; padding:5px 10px; border-radius:10px; font-size:10px; position:absolute; top:-10px; right:20px; font-weight:bold;">RECOMENDADO</span>
                 <h4>Paquete Full</h4>
-                <p style="font-size: 12px; color: var(--text-gray);">Identidad completa + Gestión mensual.</p>
                 <div class="price">S/ 2,800<span>/mes</span></div>
-                <ul>
+                <ul style="list-style:none;">
                     <li><i class="fas fa-star"></i> Todo el Paquete Identidad</li>
-                    <li><i class="fas fa-check"></i> 16 Reels mensuales</li>
-                    <li><i class="fas fa-check"></i> Fotos y carruseles feed</li>
-                    <li><i class="fas fa-check"></i> Estrategia mensual</li>
-                    <li><i class="fas fa-check"></i> Soporte prioritario 24/7</li>
-                    <li><i class="fas fa-check"></i> Reporte quincenal</li>
+                    <li><i class="fas fa-check-circle"></i> 16 Reels mensuales</li>
+                    <li><i class="fas fa-check-circle"></i> Soporte prioritario 24/7</li>
                 </ul>
+                <br>
                 <a href="https://wa.me/51971050584?text=Quiero%20el%20Paquete%20Full" class="btn-price">Consultar paquete</a>
             </div>
 
             <div class="price-card">
-                <span class="badge">WEB</span>
                 <h4>Páginas Web</h4>
-                <p style="font-size: 12px; color: var(--text-gray);">Sitios modernos y optimizados.</p>
                 <div class="price">S/ 2,000<span>/desde</span></div>
-                <ul>
-                    <li><i class="fas fa-check"></i> Diseño personalizado</li>
-                    <li><i class="fas fa-check"></i> Optimización SEO técnica</li>
-                    <li><i class="fas fa-check"></i> Formularios de contacto</li>
-                    <li><i class="fas fa-check"></i> Hosting y Dominio inc.</li>
-                    <li><i class="fas fa-check"></i> Soporte post-lanzamiento</li>
+                <ul style="list-style:none;">
+                    <li><i class="fas fa-check-circle"></i> Diseño personalizado</li>
+                    <li><i class="fas fa-check-circle"></i> Optimización SEO</li>
+                    <li><i class="fas fa-check-circle"></i> Hosting incluido</li>
                 </ul>
+                <br>
                 <a href="https://wa.me/51971050584?text=Me%20interesa%20una%20Página%20Web" class="btn-price">Consultar paquete</a>
             </div>
         </div>
     </section>
 
-    <section id="portafolio" style="background: rgba(255,255,255,0.02);">
+    <section id="portafolio" style="background: rgba(255,255,255,0.01);">
         <div class="section-title">
-            <p>NUESTRO TRABAJO</p>
-            <h2>Casos de Éxito</h2>
+            <p>VISUALIZA EL ÉXITO</p>
+            <h2>Casos Reales</h2>
         </div>
         <div class="portfolio-grid">
-            <div class="port-item"><img src="fondo.png.png" alt="Proyecto 1"></div>
-            <div class="port-item"><img src="1.png" alt="Proyecto 2"></div>
-            <div class="port-item"><img src="fondo.png.png" alt="Proyecto 3"></div>
+            <div class="port-item"><img src="1.png" alt="Trabajo 1"></div>
+            <div class="port-item"><img src="fondo.png.png" alt="Trabajo 2"></div>
+            <div class="port-item"><img src="1.png" alt="Trabajo 3"></div>
         </div>
     </section>
 
-    <section id="nosotros">
-        <div class="about-grid">
-            <div>
-                <p style="color: var(--accent); font-weight: bold; margin-bottom: 10px;">CONÓCENOS</p>
-                <h2>Expertos en transformar ideas en resultados</h2>
-                <p style="color: var(--text-gray); margin-top: 20px;">
-                    En Axiom Agency no solo creamos contenido, construimos autoridad. Con sede en Lima, ayudamos a emprendedores y empresas a destacar en un ecosistema digital saturado mediante diseño de alto impacto y estrategias de video vertical que convierten visualizaciones en clientes.
-                </p>
-            </div>
-            <div style="background: var(--card-bg); height: 300px; border-radius: 30px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.1);">
-                <i class="fas fa-rocket" style="font-size: 80px; color: var(--primary);"></i>
-            </div>
-        </div>
-    </section>
-
-    <section id="testimonios" style="background: rgba(255,255,255,0.02);">
-        <div class="section-title">
-            <p>CLIENTES FELICES</p>
-            <h2>Lo que dicen de nosotros</h2>
-        </div>
-        <div class="pricing-grid">
-            <div class="test-card">
-                <p>"Increíble el cambio en mi marca personal. Los reels tienen una calidad de otro nivel."</p>
-                <br>
-                <strong>- Jorge R. (Emprendedor)</strong>
-            </div>
-            <div class="test-card">
-                <p>"El paquete Full nos quitó un peso de encima. Ahora Axiom maneja todo y nosotros solo vendemos."</p>
-                <br>
-                <strong>- Clínica Dental Lima</strong>
-            </div>
-        </div>
-    </section>
-
-    <section id="contacto" style="text-align: center;">
-        <h2>¿LISTO PARA IMPULSAR TU MARCA?</h2>
-        <br>
-        <a href="https://wa.me/51971050584" class="cta-main" style="padding: 25px 50px; font-size: 20px;">
-            HABLEMOS POR WHATSAPP <i class="fab fa-whatsapp"></i>
-        </a>
-    </section>
-
-    <footer>
+    <footer id="contacto">
         <p>&copy; 2026 Axiom Marketing Agency - Lima, Perú. <br> Potenciando negocios digitales.</p>
     </footer>
 
