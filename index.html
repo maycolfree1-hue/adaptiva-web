@@ -6,242 +6,272 @@
     <title>Axiom | Marketing Agency</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #0081c9;
+            --accent: #40CFFF;
+            --bg: #030712;
+            --card-bg: #111827;
+            --text-gray: #9ca3af;
+        }
+
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            margin: 0; padding: 0; box-sizing: border-box;
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            scroll-behavior: smooth; /* Hace que el salto a las secciones sea suave */
+            scroll-behavior: smooth;
         }
 
-        body {
-            background-color: #030712;
-            color: white;
-            overflow-x: hidden;
-        }
+        body { background-color: var(--bg); color: white; line-height: 1.6; }
 
-        .hero {
-            position: relative;
-            height: 100vh;
-            width: 100%;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), 
-                        url('fondo.png.png'); 
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-        }
-
+        /* HEADER */
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 6%;
-            position: fixed; /* Mantiene el menú arriba siempre */
-            width: 100%;
-            z-index: 100;
-            background: rgba(3, 7, 18, 0.8);
-            backdrop-filter: blur(10px);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 6%; position: fixed; width: 100%; z-index: 100;
+            background: rgba(3, 7, 18, 0.9); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .logo-img {
-            height: 50px;
-            width: auto;
-            display: block;
-        }
+        .logo-img { height: 45px; width: auto; }
 
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
+        .nav-links { display: flex; gap: 25px; }
         .nav-links a {
-            color: #9ca3af;
-            text-decoration: none;
-            font-size: 13px;
-            text-transform: uppercase;
-            font-weight: 600;
-            transition: 0.3s;
+            color: var(--text-gray); text-decoration: none;
+            font-size: 12px; text-transform: uppercase; font-weight: 700;
+            transition: 0.3s; letter-spacing: 1px;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        .btn-nav-ws {
+            background: #25D366; color: white; padding: 8px 20px;
+            border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 13px;
         }
 
-        .nav-links a:hover {
-            color: #40CFFF;
+        /* HERO */
+        .hero {
+            height: 100vh; display: flex; align-items: center; padding: 0 10%;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('fondo.png.png');
+            background-size: cover; background-position: center;
         }
 
-        .btn-top-whatsapp {
-            background: #25D366; /* Color oficial WhatsApp */
-            color: white;
-            padding: 10px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 14px;
-            transition: 0.3s;
+        .hero-content { max-width: 800px; }
+        .tagline { color: var(--accent); letter-spacing: 5px; font-size: 14px; margin-bottom: 20px; font-weight: bold; }
+        h1 { font-size: clamp(40px, 8vw, 90px); line-height: 1; margin-bottom: 20px; text-transform: uppercase; }
+        .hero-content p { font-size: 18px; color: var(--text-gray); margin-bottom: 40px; max-width: 600px; }
+
+        /* BOTONES */
+        .cta-main {
+            background: var(--primary); color: white; padding: 18px 35px;
+            border-radius: 50px; text-decoration: none; font-weight: bold;
+            display: inline-flex; align-items: center; gap: 15px; transition: 0.3s;
+        }
+        .cta-main:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,129,201,0.4); }
+
+        /* SECCIONES GENERALES */
+        section { padding: 100px 8%; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 40px; text-transform: uppercase; margin-bottom: 10px; }
+        .section-title p { color: var(--accent); letter-spacing: 2px; font-weight: bold; }
+
+        /* SERVICIOS - PRICING */
+        .pricing-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px; margin-top: 50px;
         }
 
-        .btn-top-whatsapp:hover {
-            background: #128C7E;
-            transform: scale(1.05);
+        .price-card {
+            background: var(--card-bg); padding: 40px 30px; border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.05); transition: 0.4s;
+            position: relative; display: flex; flex-direction: column;
+        }
+        .price-card.featured { border: 2px solid var(--accent); transform: scale(1.05); z-index: 2; }
+        .badge {
+            background: var(--accent); color: var(--bg); padding: 5px 15px;
+            border-radius: 20px; font-size: 10px; font-weight: 900;
+            position: absolute; top: 20px; right: 20px;
         }
 
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding-left: 10%;
-            max-width: 950px;
-        }
+        .price-card h4 { font-size: 24px; margin-bottom: 10px; }
+        .price-card .price { font-size: 32px; font-weight: 900; margin: 20px 0; color: var(--accent); }
+        .price-card ul { list-style: none; margin-bottom: 30px; flex-grow: 1; }
+        .price-card ul li { margin-bottom: 12px; color: var(--text-gray); font-size: 14px; }
+        .price-card ul li i { color: var(--accent); margin-right: 10px; }
 
-        .tagline {
-            color: #40CFFF;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            font-size: 14px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .btn-price {
+            display: block; text-align: center; padding: 12px; border-radius: 12px;
+            border: 1px solid var(--primary); color: white; text-decoration: none; font-weight: bold;
         }
+        .price-card.featured .btn-price { background: var(--primary); }
 
-        .tagline::before {
-            content: "";
-            width: 40px;
-            height: 2px;
-            background: #40CFFF;
-        }
+        /* NOSOTROS & PORTAFOLIO */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .port-item { height: 250px; background: #1f2937; border-radius: 15px; overflow: hidden; position: relative; }
+        .port-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
 
-        h1 {
-            font-size: clamp(50px, 8vw, 100px);
-            font-weight: 900;
-            line-height: 0.9;
-            margin-bottom: 15px;
-            letter-spacing: -2px;
-            text-transform: uppercase;
-        }
+        /* TESTIMONIOS */
+        .test-card { background: rgba(255,255,255,0.03); padding: 30px; border-radius: 20px; border-left: 4px solid var(--accent); }
 
-        h2 {
-            font-size: clamp(24px, 4vw, 48px);
-            font-weight: 700;
-            margin-bottom: 30px;
-        }
+        footer { text-align: center; padding: 50px; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-gray); font-size: 14px; }
 
-        .description {
-            font-size: 18px;
-            color: #9ca3af;
-            line-height: 1.6;
-            margin-bottom: 45px;
-            max-width: 550px;
-        }
-
-        .cta-button {
-            background: #0081c9;
-            color: white;
-            width: fit-content;
-            padding: 20px 40px;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            font-size: 18px;
-            transition: 0.3s;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .cta-button:hover {
-            box-shadow: 0 10px 30px rgba(0, 129, 201, 0.5);
-            background: #00a0f0;
-            transform: translateY(-3px);
-        }
-
-        .whatsapp-icon-circle {
-            background: rgba(255,255,255,0.2);
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Secciones de relleno para que los links funcionen */
-        section {
-            padding: 100px 10%;
-            min-height: 60vh;
-            border-bottom: 1px solid #1f2937;
-        }
-
-        section h3 {
-            font-size: 40px;
-            margin-bottom: 20px;
-            color: #40CFFF;
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .about-grid { grid-template-columns: 1fr; }
+            .price-card.featured { transform: scale(1); }
         }
     </style>
 </head>
 <body>
 
-    <div class="hero" id="inicio">
-        <nav>
-            <div class="logo-container">
-                <img src="AXIOM AGENCY.jpg" alt="Axiom Logo" class="logo-img">
-            </div>
-            <div class="nav-links">
-                <a href="#inicio">Inicio</a>
-                <a href="#servicios">Servicios</a>
-                <a href="#portafolio">Portafolio</a>
-                <a href="#nosotros">Nosotros</a>
-                <a href="#testimonios">Testimonios</a>
-                <a href="#contacto">Contacto</a>
-            </div>
-            <a href="https://wa.me/51971050584?text=Hola%20Axiom,%20vengo%20de%20la%20web%20y%20quiero%20información" target="_blank" class="btn-top-whatsapp">
-                <i class="fab fa-whatsapp"></i> WhatsApp
-            </a>
-        </nav>
+    <nav>
+        <img src="AXIOM AGENCY.jpg" alt="Axiom Logo" class="logo-img">
+        <div class="nav-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#portafolio">Portafolio</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#testimonios">Testimonios</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+        <a href="https://wa.me/51971050584" class="btn-nav-ws"><i class="fab fa-whatsapp"></i> 971 050 584</a>
+    </nav>
 
-        <div class="main-content">
-            <div class="tagline">AGENCIA DE</div>
-            <h1>IMPÚLSATE</h1>
-            <h2>Marketing en Lima</h2>
-            <p class="description">
-                Solicita tu propuesta hoy mismo y empieza a maximizar tu ROI con una agencia de marketing en Lima.
-            </p>
-            
-            <a href="https://wa.me/51971050584?text=Hola,%20deseo%20una%20propuesta%20de%20marketing%20para%20mi%20negocio" target="_blank" class="cta-button">
-                <div class="whatsapp-icon-circle">
-                    <i class="fab fa-whatsapp"></i>
-                </div>
-                CONTACTAR AHORA ↗
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <div class="tagline">AGENCIA DE CRECIMIENTO</div>
+            <h1>ESCALAMOS TU MARCA AL SIGUIENTE NIVEL</h1>
+            <p>Estrategias de contenido y branding diseñadas para dominar el mercado digital desde Lima para el mundo.</p>
+            <a href="https://wa.me/51971050584?text=Hola%20Axiom,%20quiero%20empezar%20mi%20proyecto" class="cta-main">
+                EMPEZAR PROYECTO <i class="fas fa-arrow-right"></i>
             </a>
         </div>
-    </div>
-
-    <section id="servicios">
-        <h3>Nuestros Servicios</h3>
-        <p>Estrategia Digital, Manejo de Redes, Publicidad Pagada y más.</p>
     </section>
 
-    <section id="portafolio">
-        <h3>Portafolio</h3>
-        <p>Proyectos destacados de nuestra agencia en Lima.</p>
+    <section id="servicios">
+        <div class="section-title">
+            <p>PLANES A TU MEDIDA</p>
+            <h2>Paquetes diseñados para tu crecimiento</h2>
+        </div>
+        
+        <div class="pricing-grid">
+            <div class="price-card">
+                <span class="badge">POPULAR</span>
+                <h4>Paquete Contenido</h4>
+                <p style="font-size: 12px; color: var(--text-gray);">Reels profesionales para TikTok e Instagram.</p>
+                <div class="price">S/ 1,200<span>/mes</span></div>
+                <ul>
+                    <li><i class="fas fa-check"></i> 12 Reels mensuales</li>
+                    <li><i class="fas fa-check"></i> Grabación y edición pro</li>
+                    <li><i class="fas fa-check"></i> Calendario de publicación</li>
+                    <li><i class="fas fa-check"></i> Copywriting de captions</li>
+                    <li><i class="fas fa-check"></i> Análisis de métricas</li>
+                </ul>
+                <a href="https://wa.me/51971050584?text=Me%20interesa%20el%20Paquete%20Contenido" class="btn-price">Consultar paquete</a>
+            </div>
+
+            <div class="price-card">
+                <span class="badge">BRANDING</span>
+                <h4>Paquete Identidad</h4>
+                <p style="font-size: 12px; color: var(--text-gray);">Diseño integral de marca y visuales.</p>
+                <div class="price">S/ 1,500<span>/único</span></div>
+                <ul>
+                    <li><i class="fas fa-check"></i> Logo e Isotipo personalizado</li>
+                    <li><i class="fas fa-check"></i> Paleta de colores corp.</li>
+                    <li><i class="fas fa-check"></i> Mockups de marca (20 pcs)</li>
+                    <li><i class="fas fa-check"></i> Manual de marca básico</li>
+                    <li><i class="fas fa-check"></i> Todos los formatos (AI, PNG)</li>
+                </ul>
+                <a href="https://wa.me/51971050584?text=Me%20interesa%20el%20Paquete%20Identidad" class="btn-price">Consultar paquete</a>
+            </div>
+
+            <div class="price-card featured">
+                <span class="badge" style="background: white;">RECOMENDADO</span>
+                <h4>Paquete Full</h4>
+                <p style="font-size: 12px; color: var(--text-gray);">Identidad completa + Gestión mensual.</p>
+                <div class="price">S/ 2,800<span>/mes</span></div>
+                <ul>
+                    <li><i class="fas fa-star"></i> Todo el Paquete Identidad</li>
+                    <li><i class="fas fa-check"></i> 16 Reels mensuales</li>
+                    <li><i class="fas fa-check"></i> Fotos y carruseles feed</li>
+                    <li><i class="fas fa-check"></i> Estrategia mensual</li>
+                    <li><i class="fas fa-check"></i> Soporte prioritario 24/7</li>
+                    <li><i class="fas fa-check"></i> Reporte quincenal</li>
+                </ul>
+                <a href="https://wa.me/51971050584?text=Quiero%20el%20Paquete%20Full" class="btn-price">Consultar paquete</a>
+            </div>
+
+            <div class="price-card">
+                <span class="badge">WEB</span>
+                <h4>Páginas Web</h4>
+                <p style="font-size: 12px; color: var(--text-gray);">Sitios modernos y optimizados.</p>
+                <div class="price">S/ 2,000<span>/desde</span></div>
+                <ul>
+                    <li><i class="fas fa-check"></i> Diseño personalizado</li>
+                    <li><i class="fas fa-check"></i> Optimización SEO técnica</li>
+                    <li><i class="fas fa-check"></i> Formularios de contacto</li>
+                    <li><i class="fas fa-check"></i> Hosting y Dominio inc.</li>
+                    <li><i class="fas fa-check"></i> Soporte post-lanzamiento</li>
+                </ul>
+                <a href="https://wa.me/51971050584?text=Me%20interesa%20una%20Página%20Web" class="btn-price">Consultar paquete</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="portafolio" style="background: rgba(255,255,255,0.02);">
+        <div class="section-title">
+            <p>NUESTRO TRABAJO</p>
+            <h2>Casos de Éxito</h2>
+        </div>
+        <div class="portfolio-grid">
+            <div class="port-item"><img src="fondo.png.png" alt="Proyecto 1"></div>
+            <div class="port-item"><img src="1.png" alt="Proyecto 2"></div>
+            <div class="port-item"><img src="fondo.png.png" alt="Proyecto 3"></div>
+        </div>
     </section>
 
     <section id="nosotros">
-        <h3>Sobre Nosotros</h3>
-        <p>Somos expertos impulsando marcas locales al siguiente nivel.</p>
+        <div class="about-grid">
+            <div>
+                <p style="color: var(--accent); font-weight: bold; margin-bottom: 10px;">CONÓCENOS</p>
+                <h2>Expertos en transformar ideas en resultados</h2>
+                <p style="color: var(--text-gray); margin-top: 20px;">
+                    En Axiom Agency no solo creamos contenido, construimos autoridad. Con sede en Lima, ayudamos a emprendedores y empresas a destacar en un ecosistema digital saturado mediante diseño de alto impacto y estrategias de video vertical que convierten visualizaciones en clientes.
+                </p>
+            </div>
+            <div style="background: var(--card-bg); height: 300px; border-radius: 30px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.1);">
+                <i class="fas fa-rocket" style="font-size: 80px; color: var(--primary);"></i>
+            </div>
+        </div>
     </section>
 
-    <section id="testimonios">
-        <h3>Testimonios</h3>
-        <p>Lo que nuestros clientes dicen de Axiom.</p>
+    <section id="testimonios" style="background: rgba(255,255,255,0.02);">
+        <div class="section-title">
+            <p>CLIENTES FELICES</p>
+            <h2>Lo que dicen de nosotros</h2>
+        </div>
+        <div class="pricing-grid">
+            <div class="test-card">
+                <p>"Increíble el cambio en mi marca personal. Los reels tienen una calidad de otro nivel."</p>
+                <br>
+                <strong>- Jorge R. (Emprendedor)</strong>
+            </div>
+            <div class="test-card">
+                <p>"El paquete Full nos quitó un peso de encima. Ahora Axiom maneja todo y nosotros solo vendemos."</p>
+                <br>
+                <strong>- Clínica Dental Lima</strong>
+            </div>
+        </div>
     </section>
 
-    <section id="contacto">
-        <h3>Contacto</h3>
-        <p>¿Listo para empezar? Escríbenos.</p>
+    <section id="contacto" style="text-align: center;">
+        <h2>¿LISTO PARA IMPULSAR TU MARCA?</h2>
+        <br>
+        <a href="https://wa.me/51971050584" class="cta-main" style="padding: 25px 50px; font-size: 20px;">
+            HABLEMOS POR WHATSAPP <i class="fab fa-whatsapp"></i>
+        </a>
     </section>
+
+    <footer>
+        <p>&copy; 2026 Axiom Marketing Agency - Lima, Perú. <br> Potenciando negocios digitales.</p>
+    </footer>
 
 </body>
 </html>
