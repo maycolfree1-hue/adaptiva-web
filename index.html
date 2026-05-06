@@ -23,9 +23,9 @@
             position: relative;
             height: 100vh;
             width: 100%;
-            /* Overlay oscuro para que el texto resalte sobre cualquier fondo */
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop'); 
+            /* Se usa fondo.png.png que es el nombre exacto de tu archivo subido */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), 
+                        url('fondo.png.png'); 
             background-size: cover;
             background-position: center;
             display: flex;
@@ -38,13 +38,12 @@
             align-items: center;
             padding: 20px 6%;
             z-index: 10;
-            background: rgba(3, 7, 18, 0.8);
+            background: rgba(3, 7, 18, 0.6);
             backdrop-filter: blur(10px);
         }
 
-        /* Contenedor del Logo */
         .logo-img {
-            height: 50px; /* Ajusta este valor según prefieras el tamaño */
+            height: 50px;
             width: auto;
             display: block;
         }
@@ -60,7 +59,6 @@
             font-size: 13px;
             text-transform: uppercase;
             font-weight: 600;
-            transition: 0.3s;
         }
 
         .nav-links a:hover, .nav-links a.active {
@@ -75,11 +73,6 @@
             text-decoration: none;
             font-weight: bold;
             font-size: 14px;
-            transition: 0.3s;
-        }
-
-        .btn-top-whatsapp:hover {
-            background: #00a0f0;
         }
 
         .main-content {
@@ -144,13 +137,7 @@
             align-items: center;
             gap: 20px;
             font-size: 18px;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .cta-button:hover {
-            transform: scale(1.05);
-            background: #00a0f0;
-            box-shadow: 0 10px 25px rgba(0, 160, 240, 0.3);
+            transition: 0.4s;
         }
 
         .whatsapp-icon-circle {
@@ -180,7 +167,6 @@
     <div class="hero">
         <nav>
             <div class="logo-container">
-                <!-- Aquí se carga tu imagen directamente desde el repositorio -->
                 <img src="AXIOM AGENCY.jpg" alt="Axiom Logo" class="logo-img">
             </div>
             <div class="nav-links">
