@@ -124,7 +124,7 @@
             max-width: 550px;
         }
 
-        /* Estilos del Botón con efectos */
+        /* Estilos del Botón con soporte de transformaciones dinámicas */
         .cta-button {
             background: #0081c9;
             color: white;
@@ -137,14 +137,17 @@
             align-items: center;
             gap: 20px;
             font-size: 18px;
-            transition: transform 0.2s ease-out, box-shadow 0.3s;
+            /* Usamos transition solo para el retorno (mouseleave) manejado por JS, o una muy rápida para suavizar */
+            transition: transform 0.1s ease-out, box-shadow 0.3s, background-color 0.3s;
             position: relative;
-            overflow: hidden; /* Importante para el efecto de brillo */
+            overflow: hidden;
+            display: inline-flex; /* Asegura un comportamiento de bloque en línea correcto */
+            cursor: pointer;
         }
 
         .cta-button:hover {
             box-shadow: 0 10px 30px rgba(0, 129, 201, 0.5);
-            background: #00a0f0;
+            background-color: #00a0f0;
         }
 
         /* Efecto de brillo pasando por el botón */
@@ -231,18 +234,28 @@
     <script>
         const btn = document.getElementById('btn-magnet');
 
-        btn.addEventListener('mousemove', (e) => {
-            const rect = btn.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
+        if (btn) {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                // Distancia desde el cursor al centro del botón
+                const x = e.clientX - (rect.left + rect.width / 2);
+                const y = e.clientY - (rect.top + rect.height / 2);
 
-            // El botón se mueve un 20% hacia la posición del mouse
-            btn.style.transform = `translate(${x * 0.2}px, ${y * 0.4}px)`;
-        });
+                // Multiplicador para controlar la fuerza de atracción (0.3 es suave y notable)
+                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
 
-        btn.addEventListener('mouseleave', () => {
-            btn.style.transform = `translate(0px, 0px)`;
-        });
+            btn.addEventListener('mouseleave', () => {
+                // Regresa suavemente a su posición original
+                btn.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                btn.style.transform = 'translate(0px, 0px)';
+                
+                // Limpia la transición de retorno para que vuelva a ser interactivo al instante
+                setTimeout(() => {
+                    btn.style.transition = 'transform 0.1s ease-out, box-shadow 0.3s, background-color 0.3s';
+                }, 500);
+            });
+        }
     </script>
 
 </body>
