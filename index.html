@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axiom | Marketing Agency</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #030712;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            /* Overlay oscuro para que el texto resalte sobre cualquier fondo */
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop'); 
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 6%;
+            z-index: 10;
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Contenedor del Logo */
+        .logo-img {
+            height: 50px; /* Ajusta este valor según prefieras el tamaño */
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #40CFFF;
+        }
+
+        .btn-top-whatsapp {
+            background: #0081c9;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .btn-top-whatsapp:hover {
+            background: #00a0f0;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 10%;
+            max-width: 950px;
+        }
+
+        .tagline {
+            color: #40CFFF;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tagline::before {
+            content: "";
+            width: 40px;
+            height: 2px;
+            background: #40CFFF;
+        }
+
+        h1 {
+            font-size: clamp(50px, 8vw, 100px);
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 15px;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: clamp(24px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .description {
+            font-size: 18px;
+            color: #9ca3af;
+            line-height: 1.6;
+            margin-bottom: 45px;
+            max-width: 550px;
+        }
+
+        .cta-button {
+            background: #0081c9;
+            color: white;
+            width: fit-content;
+            padding: 20px 40px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 18px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            background: #00a0f0;
+            box-shadow: 0 10px 25px rgba(0, 160, 240, 0.3);
+        }
+
+        .whatsapp-icon-circle {
+            background: rgba(255,255,255,0.2);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: #4b5563;
+            font-size: 11px;
+            letter-spacing: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <nav>
+            <div class="logo-container">
+                <!-- Aquí se carga tu imagen directamente desde el repositorio -->
+                <img src="AXIOM AGENCY.jpg" alt="Axiom Logo" class="logo-img">
+            </div>
+            <div class="nav-links">
+                <a href="#" class="active">Inicio</a>
+                <a href="#">Servicios</a>
+                <a href="#">Portafolio</a>
+                <a href="#">Nosotros</a>
+                <a href="#">Testimonios</a>
+                <a href="#">Contacto</a>
+            </div>
+            <a href="#" class="btn-top-whatsapp">WhatsApp</a>
+        </nav>
+
+        <div class="main-content">
+            <div class="tagline">AGENCIA DE</div>
+            <h1>IMPÚLSATE</h1>
+            <h2>Marketing en Lima</h2>
+            <p class="description">
+                Solicita tu propuesta hoy mismo y empieza a maximizar tu ROI con una agencia de marketing en Lima.
+            </p>
+            
+            <a href="#" class="cta-button">
+                <div class="whatsapp-icon-circle">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                CONTACTAR AHORA ↗
+            </a>
+        </div>
+
+        <div class="scroll-down">
+            SCROLL <br>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </div>
+
+</body>
+</html>
