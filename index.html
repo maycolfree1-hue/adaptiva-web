@@ -24,15 +24,14 @@
 
         body { background-color: var(--bg); color: white; line-height: 1.6; overflow-x: hidden; }
 
-        /* HEADER OPTIMIZADO - BARRA DELGADA */
+        /* HEADER ELEGANTE - AGRANDADO COMO PEDISTE */
         nav {
             display: flex; 
             justify-content: space-between; 
             align-items: center;
-            padding: 0 6%; 
+            padding: 20px 6%; /* Aumentado de 5px a 20px para mayor altura y elegancia */
             position: fixed; 
             width: 100%; 
-            height: 60px; /* Altura delgada y fija */
             z-index: 100;
             background: rgba(3, 7, 18, 0.95); 
             backdrop-filter: blur(10px);
@@ -40,9 +39,8 @@
             transition: 0.3s;
         }
 
-        /* LOGO AJUSTADO A LA BARRA */
         .logo-img { 
-            height: 45px; /* Tamaño estético para nav de 60px */
+            height: 80px; /* Aumentado ligeramente para balancear el header */
             width: auto; 
             display: block;
             transition: transform 0.3s ease, filter 0.3s ease;
@@ -57,46 +55,37 @@
         
         .nav-links a {
             color: var(--text-gray); text-decoration: none;
-            font-size: 11px; text-transform: uppercase; font-weight: 700;
+            font-size: 12px; text-transform: uppercase; font-weight: 700;
             transition: 0.3s; letter-spacing: 1px;
         }
         .nav-links a:hover { color: var(--accent); }
 
         .btn-nav-ws {
-            background: var(--primary); color: white; padding: 6px 18px;
-            border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 12px;
+            background: var(--primary); color: white; padding: 10px 25px;
+            border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 13px;
             transition: 0.3s;
         }
         .btn-nav-ws:hover { background: var(--accent); color: black; }
 
-        /* HERO AJUSTADO */
+        /* HERO - SE MANTIENE 100VH (NO SE ACHICA) */
         .hero {
-            height: 85vh; /* Reducido para que la página empiece más arriba */
-            display: flex; align-items: center; padding: 0 10%;
+            height: 100vh; display: flex; align-items: center; padding: 0 10%;
             position: relative; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('fondo.png.png');
             background-size: cover; background-position: center;
-            padding-top: 60px;
         }
         #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; }
         .hero-content { position: relative; z-index: 2; max-width: 800px; }
-        .hero-content h1 { 
-            font-size: clamp(40px, 8vw, 80px); 
-            line-height: 1; 
-            margin-bottom: 20px; 
-            text-transform: uppercase; 
-            font-weight: 900;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.5); /* Mejora lectura */
-        }
+        .hero-content h1 { font-size: clamp(40px, 8vw, 80px); line-height: 1; margin-bottom: 20px; text-transform: uppercase; font-weight: 900; }
         .hero-content p { font-size: 18px; color: var(--text-gray); max-width: 550px; }
         .cta-main {
             background: var(--primary); color: white; padding: 18px 35px;
             border-radius: 50px; text-decoration: none; font-weight: bold;
-            display: inline-flex; align-items: center; gap: 15px; transition: 0.3s; margin-top: 40px; 
+            display: inline-flex; align-items: center; gap: 15px; transition: 0.3s; margin-top: 50px; 
         }
         .cta-main:hover { transform: scale(1.05); background: var(--accent); color: black; }
 
-        /* SECCIONES GENERALES */
-        section { padding: 80px 8%; position: relative; }
+        /* SECCIONES */
+        section { padding: 100px 8%; position: relative; }
         .section-tag { color: var(--accent); letter-spacing: 3px; font-weight: bold; text-align: center; display: block; margin-bottom: 10px; font-size: 14px; }
         .section-title { text-align: center; font-size: 45px; margin-bottom: 60px; font-weight: 800; }
 
@@ -171,8 +160,8 @@
 
         /* RESPONSIVE */
         @media (max-width: 900px) {
-            nav { height: 55px; padding: 0 5%; }
-            .logo-img { height: 35px; } 
+            nav { padding: 15px 5%; }
+            .logo-img { height: 60px; }
             .nav-links { display: none; }
             .about-container { flex-direction: column; }
             .bento-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
