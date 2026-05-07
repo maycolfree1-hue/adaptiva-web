@@ -29,7 +29,7 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center;
-            padding: 8px 6%; /* Reducido para dar espacio al logo */
+            padding: 12px 6%; /* Un poco más de aire arriba y abajo */
             position: fixed; 
             width: 100%; 
             z-index: 100;
@@ -40,14 +40,15 @@
         }
 
         .logo-img { 
-            height: 70px; /* Tamaño aumentado para mayor visibilidad */
+            height: 90px; /* Tamaño aumentado a 90px para impacto total */
             width: auto; 
             display: block;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, filter 0.3s ease;
         }
 
         .logo-img:hover {
-            transform: scale(1.05); /* Efecto interactivo */
+            transform: scale(1.08); /* Efecto un poco más pronunciado */
+            filter: drop-shadow(0 0 10px var(--accent)); /* Brillo al pasar el mouse */
         }
 
         .nav-links { display: flex; gap: 25px; align-items: center; }
@@ -60,9 +61,11 @@
         .nav-links a:hover { color: var(--accent); }
 
         .btn-nav-ws {
-            background: var(--primary); color: white; padding: 8px 20px;
+            background: var(--primary); color: white; padding: 10px 25px;
             border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 13px;
+            transition: 0.3s;
         }
+        .btn-nav-ws:hover { background: var(--accent); color: black; }
 
         /* HERO CON PARTÍCULAS */
         .hero {
@@ -157,9 +160,9 @@
 
         /* RESPONSIVE */
         @media (max-width: 900px) {
-            nav { padding: 10px 5%; }
-            .logo-img { height: 55px; } /* Ajuste para móviles */
-            .nav-links { display: none; } /* Podrías agregar un menú hamburguesa luego */
+            nav { padding: 8px 5%; }
+            .logo-img { height: 65px; } /* Proporcionalmente grande en móvil */
+            .nav-links { display: none; }
             .about-container { flex-direction: column; }
             .bento-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
             .bento-item.tall { grid-row: span 1; height: 350px; }
