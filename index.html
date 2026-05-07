@@ -29,9 +29,7 @@
             background: rgba(3, 7, 18, 0.9); backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-
         .logo-img { height: 45px; width: auto; }
-
         .nav-links { display: flex; gap: 25px; }
         .nav-links a {
             color: var(--text-gray); text-decoration: none;
@@ -39,7 +37,6 @@
             transition: 0.3s; letter-spacing: 1px;
         }
         .nav-links a:hover { color: var(--accent); }
-
         .btn-nav-ws {
             background: var(--primary); color: white; padding: 8px 20px;
             border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 13px;
@@ -48,70 +45,98 @@
         /* HERO CON PARTÍCULAS */
         .hero {
             height: 100vh; display: flex; align-items: center; padding: 0 10%;
-            position: relative;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('fondo.png.png');
+            position: relative; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('fondo.png.png');
             background-size: cover; background-position: center;
-            overflow: hidden;
         }
-
-        #particles-js {
-            position: absolute;
-            width: 100%; height: 100%;
-            top: 0; left: 0; z-index: 1;
-        }
-
+        #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; }
         .hero-content { position: relative; z-index: 2; max-width: 800px; }
         .hero-content h1 { font-size: clamp(40px, 8vw, 80px); line-height: 1; margin-bottom: 20px; text-transform: uppercase; font-weight: 900; }
         .hero-content p { font-size: 18px; color: var(--text-gray); max-width: 550px; }
-
         .cta-main {
             background: var(--primary); color: white; padding: 18px 35px;
             border-radius: 50px; text-decoration: none; font-weight: bold;
-            display: inline-flex; align-items: center; gap: 15px; transition: 0.3s;
-            margin-top: 50px; 
+            display: inline-flex; align-items: center; gap: 15px; transition: 0.3s; margin-top: 50px; 
         }
         .cta-main:hover { transform: scale(1.05); background: var(--accent); color: black; }
 
-        /* PORTAFOLIO BENTO */
-        section { padding: 80px 8%; position: relative; z-index: 2; }
+        /* SECCIONES GENERALES */
+        section { padding: 100px 8%; position: relative; }
         .section-tag { color: var(--accent); letter-spacing: 3px; font-weight: bold; text-align: center; display: block; margin-bottom: 10px; font-size: 14px; }
-        .section-title { text-align: center; font-size: 45px; margin-bottom: 50px; font-weight: 800; }
+        .section-title { text-align: center; font-size: 45px; margin-bottom: 60px; font-weight: 800; }
 
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(2, 300px);
-            gap: 20px;
-            max-width: 1200px;
+        /* SERVICIOS CON PRECIOS */
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px; 
+            max-width: 1200px; 
             margin: 0 auto;
         }
-
-        .bento-item {
-            position: relative;
+        .service-card {
+            background: var(--card-bg); 
+            padding: 40px; 
             border-radius: 30px;
-            overflow: hidden;
-            background: #1f2937;
-            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.05); 
+            transition: 0.4s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
         }
+        .service-card:hover { 
+            border-color: var(--accent); 
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .service-card i { font-size: 45px; color: var(--accent); margin-bottom: 25px; }
+        .service-card h3 { font-size: 24px; margin-bottom: 10px; }
+        .service-card .price { font-size: 28px; font-weight: 900; color: white; margin-bottom: 20px; }
+        .service-card .price span { font-size: 14px; color: var(--text-gray); }
+        .service-card ul { list-style: none; text-align: left; margin-bottom: 30px; flex-grow: 1; }
+        .service-card ul li { color: var(--text-gray); margin-bottom: 10px; font-size: 14px; }
+        .service-card ul li i { font-size: 14px; margin-right: 10px; margin-bottom: 0; color: var(--accent); }
+        
+        .btn-card {
+            background: rgba(255,255,255,0.05); color: white; padding: 12px;
+            border-radius: 50px; text-decoration: none; font-weight: bold;
+            transition: 0.3s; border: 1px solid rgba(255,255,255,0.1);
+        }
+        .service-card:hover .btn-card { background: var(--primary); border-color: var(--primary); }
 
+        /* PORTAFOLIO BENTO */
+        .bento-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 300px); gap: 20px; max-width: 1200px; margin: 0 auto;
+        }
+        .bento-item { position: relative; border-radius: 30px; overflow: hidden; background: #1f2937; cursor: pointer; }
         .bento-item.tall { grid-row: span 2; } 
-        .bento-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+        .bento-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
         .bento-item:hover img { transform: scale(1.1); }
-
         .bento-overlay {
-            position: absolute;
-            bottom: 0; left: 0; width: 100%; height: 60%;
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 60%;
             background: linear-gradient(to top, rgba(0,0,0,0.9) 10%, transparent);
-            display: flex; flex-direction: column; justify-content: flex-end;
-            padding: 30px; transition: 0.3s;
+            display: flex; flex-direction: column; justify-content: flex-end; padding: 30px;
         }
 
-        .bento-overlay h3 { font-size: 22px; margin-bottom: 5px; font-weight: 700; }
-        .bento-overlay span { font-size: 11px; text-transform: uppercase; color: var(--accent); font-weight: bold; letter-spacing: 1px; }
+        /* NOSOTROS */
+        .about-container { display: flex; gap: 50px; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .about-text { flex: 1; }
+        .about-img { flex: 1; border-radius: 30px; width: 100%; height: 450px; object-fit: cover; }
+
+        /* TESTIMONIOS */
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .testi-card { background: rgba(255,255,255,0.03); padding: 40px; border-radius: 30px; border-left: 4px solid var(--accent); }
+        .testi-card p { font-style: italic; color: var(--text-gray); margin-bottom: 20px; }
+
+        /* CONTACTO */
+        .contact-box {
+            background: var(--primary); padding: 80px 40px; border-radius: 50px;
+            text-align: center; max-width: 1000px; margin: 0 auto;
+        }
 
         @media (max-width: 900px) {
+            .about-container { flex-direction: column; }
             .bento-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
-            .bento-item.tall { grid-row: span 1; height: 400px; }
+            .bento-item.tall { grid-row: span 1; height: 350px; }
         }
     </style>
 </head>
@@ -131,69 +156,108 @@
     </nav>
 
     <section class="hero" id="inicio">
-        <div id="particles-js"></div> <div class="hero-content">
+        <div id="particles-js"></div>
+        <div class="hero-content">
             <h1>IMPÚLSATE</h1>
             <p style="font-size: 32px; font-weight: bold; color: white; margin-bottom: 10px;">Marketing en Lima</p>
-            <p>Solicita tu propuesta hoy mismo y empieza a maximizar tu ROI con una agencia de marketing en Lima.</p>
-            <a href="https://wa.me/51971050584" class="cta-main">
-                <i class="fab fa-whatsapp"></i> CONTACTAR AHORA ↗
-            </a>
+            <p>Escala tu facturación y domina el mercado digital con estrategias de alto impacto.</p>
+            <a href="#servicios" class="cta-main">VER PLANES ↗</a>
+        </div>
+    </section>
+
+    <section id="servicios">
+        <span class="section-tag">NUESTROS PLANES</span>
+        <h2 class="section-title">Servicios a tu medida</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-camera-retro"></i>
+                <h3>Contenido</h3>
+                <div class="price">S/ 1,200 <span>/ mes</span></div>
+                <ul>
+                    <li><i class="fas fa-check"></i> Gestión de Redes Sociales</li>
+                    <li><i class="fas fa-check"></i> Fotografía Profesional</li>
+                    <li><i class="fas fa-check"></i> Edición de Reels</li>
+                    <li><i class="fas fa-check"></i> Diseño de Posts</li>
+                </ul>
+                <a href="https://wa.me/51971050584" class="btn-card">Lo quiero</a>
+            </div>
+
+            <div class="service-card" style="border-color: var(--accent);">
+                <i class="fas fa-rocket"></i>
+                <h3>Paquete Full</h3>
+                <div class="price">S/ 2,800 <span>/ mes</span></div>
+                <ul>
+                    <li><i class="fas fa-check"></i> Todo lo del Plan Contenido</li>
+                    <li><i class="fas fa-check"></i> Google & Meta Ads</li>
+                    <li><i class="fas fa-check"></i> Reportes de Rendimiento</li>
+                    <li><i class="fas fa-check"></i> Estrategia de Ventas</li>
+                </ul>
+                <a href="https://wa.me/51971050584" class="btn-card" style="background: var(--primary);">El más pedido</a>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-laptop-code"></i>
+                <h3>Web & Brand</h3>
+                <div class="price">S/ 1,500 <span>/ pago único</span></div>
+                <ul>
+                    <li><i class="fas fa-check"></i> Diseño de Logotipo</li>
+                    <li><i class="fas fa-check"></i> Manual de Marca</li>
+                    <li><i class="fas fa-check"></i> Landing Page Profesional</li>
+                    <li><i class="fas fa-check"></i> Dominio y Hosting x1 año</li>
+                </ul>
+                <a href="https://wa.me/51971050584" class="btn-card">Consultar</a>
+            </div>
         </div>
     </section>
 
     <section id="portafolio">
-        <span class="section-tag">PORTAFOLIO</span>
-        <h2 class="section-title">Proyectos que transforman marcas</h2>
-
+        <span class="section-tag">TRABAJOS</span>
+        <h2 class="section-title">Casos de Éxito</h2>
         <div class="bento-grid">
-            <div class="bento-item tall">
-                <img src="proyecto1.jpg" alt="InkaBrew Café">
-                <div class="bento-overlay">
-                    <h3>InkaBrew Café</h3>
-                    <span>PAQUETE CONTENIDO</span>
-                </div>
+            <div class="bento-item tall"><img src="proyecto1.jpg"><div class="bento-overlay"><h3>InkaBrew</h3><span>CONTENIDO</span></div></div>
+            <div class="bento-item"><img src="proyecto2.jpg"><div class="bento-overlay"><h3>VitalFit</h3><span>FULL PACK</span></div></div>
+            <div class="bento-item"><img src="proyecto3.jpg"><div class="bento-overlay"><h3>GreenRoots</h3><span>BRANDING</span></div></div>
+            <div class="bento-item"><img src="proyecto4.jpg"><div class="bento-overlay"><h3>Dental Care</h3><span>WEB</span></div></div>
+            <div class="bento-item tall"><img src="proyecto5.jpg"><div class="bento-overlay"><h3>UrbanStyle</h3><span>CONTENIDO</span></div></div>
+            <div class="bento-item"><img src="proyecto6.jpg"><div class="bento-overlay"><h3>CasaMar</h3><span>FULL PACK</span></div></div>
+        </div>
+    </section>
+
+    <section id="nosotros">
+        <div class="about-container">
+            <div class="about-text">
+                <span class="section-tag">NOSOTROS</span>
+                <h2 style="font-size: 40px; margin-bottom: 20px;">Creatividad con resultados</h2>
+                <p style="color: var(--text-gray); font-size: 18px; margin-bottom: 20px;">En Axiom Agency, ayudamos a los emprendedores de Lima a destacar en el ruido digital. No solo hacemos diseños bonitos, creamos máquinas de ventas.</p>
+                <p style="color: var(--text-gray);">Nuestra metodología se basa en entender tu negocio y aplicar las tendencias que realmente funcionan hoy.</p>
             </div>
-            <div class="bento-item">
-                <img src="proyecto2.jpg" alt="VitalFit Gym">
-                <div class="bento-overlay">
-                    <h3>VitalFit Gym</h3>
-                    <span>PAQUETE FULL</span>
-                </div>
+            <img src="fondo.png.png" class="about-img" alt="Axiom Office">
+        </div>
+    </section>
+
+    <section id="testimonios">
+        <span class="section-tag">CLIENTES</span>
+        <h2 class="section-title">Lo que dicen de nosotros</h2>
+        <div class="testimonials-grid">
+            <div class="testi-card">
+                <p>"Axiom transformó nuestras redes. Empezamos a recibir mensajes de clientes reales desde la primera semana."</p>
+                <h4>- Juan de InkaBrew</h4>
             </div>
-            <div class="bento-item">
-                <img src="proyecto3.jpg" alt="GreenRoots Organics">
-                <div class="bento-overlay">
-                    <h3>GreenRoots Organics</h3>
-                    <span>PAQUETE IDENTIDAD</span>
-                </div>
-            </div>
-            <div class="bento-item">
-                <img src="proyecto4.jpg" alt="Lima Dental Care">
-                <div class="bento-overlay">
-                    <h3>Lima Dental Care</h3>
-                    <span>PÁGINA WEB</span>
-                </div>
-            </div>
-            <div class="bento-item tall">
-                <img src="proyecto5.jpg" alt="UrbanStyle Boutique">
-                <div class="bento-overlay">
-                    <h3>UrbanStyle Boutique</h3>
-                    <span>PAQUETE CONTENIDO</span>
-                </div>
-            </div>
-            <div class="bento-item">
-                <img src="proyecto6.jpg" alt="CasaMar Restaurant">
-                <div class="bento-overlay">
-                    <h3>CasaMar Restaurant</h3>
-                    <span>PAQUETE FULL</span>
-                </div>
+            <div class="testi-card">
+                <p>"El equipo es súper creativo y entienden perfecto lo que uno necesita. Muy recomendados."</p>
+                <h4>- Carlos de VitalFit</h4>
             </div>
         </div>
     </section>
 
-    <section id="contacto" style="text-align: center; background: #070b14;">
-        <h2 style="font-size: 35px; margin-bottom: 20px;">¿LISTO PARA EMPEZAR?</h2>
-        <a href="https://wa.me/51971050584" class="cta-main" style="margin-top: 10px;">ESCRIBIR POR WHATSAPP</a>
+    <section id="contacto">
+        <div class="contact-box">
+            <h2 style="font-size: 45px; margin-bottom: 20px;">¿Listo para escalar?</h2>
+            <p style="font-size: 18px; margin-bottom: 40px;">Hablemos por WhatsApp y diseñemos el plan perfecto para tu marca.</p>
+            <a href="https://wa.me/51971050584" class="cta-main" style="background: white; color: black; margin-top: 0;">
+                <i class="fab fa-whatsapp"></i> HABLAR AHORA
+            </a>
+        </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -203,35 +267,14 @@
                 "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
                 "color": { "value": "#40CFFF" },
                 "shape": { "type": "circle" },
-                "opacity": { "value": 0.5, "random": false },
+                "opacity": { "value": 0.4 },
                 "size": { "value": 3, "random": true },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#40CFFF",
-                    "opacity": 0.3,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 2,
-                    "direction": "none",
-                    "random": false,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false
-                }
+                "line_linked": { "enable": true, "distance": 150, "color": "#40CFFF", "opacity": 0.2, "width": 1 },
+                "move": { "enable": true, "speed": 2 }
             },
             "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": { "enable": true, "mode": "grab" },
-                    "onclick": { "enable": true, "mode": "push" },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": { "distance": 200, "line_linked": { "opacity": 0.6 } }
-                }
+                "events": { "onhover": { "enable": true, "mode": "grab" } },
+                "modes": { "grab": { "distance": 200, "line_linked": { "opacity": 0.5 } } }
             },
             "retina_detect": true
         });
