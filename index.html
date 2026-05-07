@@ -29,7 +29,7 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center;
-            padding: 12px 6%; /* Un poco más de aire arriba y abajo */
+            padding: 10px 6%; /* Ajustado para el nuevo tamaño del logo */
             position: fixed; 
             width: 100%; 
             z-index: 100;
@@ -40,15 +40,15 @@
         }
 
         .logo-img { 
-            height: 90px; /* Tamaño aumentado a 90px para impacto total */
+            height: 150px; /* Tamaño aumentado de 90px a 150px para máxima legibilidad */
             width: auto; 
             display: block;
             transition: transform 0.3s ease, filter 0.3s ease;
         }
 
         .logo-img:hover {
-            transform: scale(1.08); /* Efecto un poco más pronunciado */
-            filter: drop-shadow(0 0 10px var(--accent)); /* Brillo al pasar el mouse */
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 15px var(--accent));
         }
 
         .nav-links { display: flex; gap: 25px; align-items: center; }
@@ -161,7 +161,7 @@
         /* RESPONSIVE */
         @media (max-width: 900px) {
             nav { padding: 8px 5%; }
-            .logo-img { height: 65px; } /* Proporcionalmente grande en móvil */
+            .logo-img { height: 100px; } /* Grande también en móvil para que se lea */
             .nav-links { display: none; }
             .about-container { flex-direction: column; }
             .bento-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
