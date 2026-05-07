@@ -20,7 +20,7 @@
             scroll-behavior: smooth;
         }
 
-        body { background-color: var(--bg); color: white; line-height: 1.6; }
+        body { background-color: var(--bg); color: white; line-height: 1.6; overflow-x: hidden; }
 
         /* HEADER */
         nav {
@@ -41,32 +41,39 @@
         .nav-links a:hover { color: var(--accent); }
 
         .btn-nav-ws {
-            background: #0081c9; color: white; padding: 8px 20px;
+            background: var(--primary); color: white; padding: 8px 20px;
             border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 13px;
         }
 
-        /* HERO - INICIO */
+        /* HERO CON PARTÍCULAS */
         .hero {
             height: 100vh; display: flex; align-items: center; padding: 0 10%;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('fondo.png.png');
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('fondo.png.png');
             background-size: cover; background-position: center;
+            overflow: hidden;
         }
 
-        .hero-content { max-width: 800px; }
+        #particles-js {
+            position: absolute;
+            width: 100%; height: 100%;
+            top: 0; left: 0; z-index: 1;
+        }
+
+        .hero-content { position: relative; z-index: 2; max-width: 800px; }
         .hero-content h1 { font-size: clamp(40px, 8vw, 80px); line-height: 1; margin-bottom: 20px; text-transform: uppercase; font-weight: 900; }
         .hero-content p { font-size: 18px; color: var(--text-gray); max-width: 550px; }
 
-        /* BOTÓN CELESTE AJUSTADO */
         .cta-main {
             background: var(--primary); color: white; padding: 18px 35px;
             border-radius: 50px; text-decoration: none; font-weight: bold;
             display: inline-flex; align-items: center; gap: 15px; transition: 0.3s;
-            margin-top: 50px; /* Más abajo como pediste */
+            margin-top: 50px; 
         }
         .cta-main:hover { transform: scale(1.05); background: var(--accent); color: black; }
 
-        /* PORTAFOLIO - BENTO GRID */
-        section { padding: 80px 8%; }
+        /* PORTAFOLIO BENTO */
+        section { padding: 80px 8%; position: relative; z-index: 2; }
         .section-tag { color: var(--accent); letter-spacing: 3px; font-weight: bold; text-align: center; display: block; margin-bottom: 10px; font-size: 14px; }
         .section-title { text-align: center; font-size: 45px; margin-bottom: 50px; font-weight: 800; }
 
@@ -81,39 +88,30 @@
 
         .bento-item {
             position: relative;
-            border-radius: 30px; /* Esquinas muy redondeadas como el ejemplo */
+            border-radius: 30px;
             overflow: hidden;
             background: #1f2937;
             cursor: pointer;
         }
 
-        /* Tamaños desiguales */
-        .bento-item.tall { grid-row: span 2; } /* Item largo (InkaBrew) */
-        .bento-item.wide { grid-column: span 1; } 
-
-        .bento-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .bento-item.tall { grid-row: span 2; } 
+        .bento-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
         .bento-item:hover img { transform: scale(1.1); }
 
-        /* Overlay con texto inferior */
         .bento-overlay {
             position: absolute;
-            bottom: 0; left: 0; width: 100%; height: 50%;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 25px;
-            transition: 0.3s;
+            bottom: 0; left: 0; width: 100%; height: 60%;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 10%, transparent);
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 30px; transition: 0.3s;
         }
 
-        .bento-overlay h3 { font-size: 20px; margin-bottom: 5px; font-weight: 700; }
+        .bento-overlay h3 { font-size: 22px; margin-bottom: 5px; font-weight: 700; }
         .bento-overlay span { font-size: 11px; text-transform: uppercase; color: var(--accent); font-weight: bold; letter-spacing: 1px; }
 
-        /* RESPONSIVE */
         @media (max-width: 900px) {
             .bento-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
             .bento-item.tall { grid-row: span 1; height: 400px; }
-            .hero-content h1 { font-size: 50px; }
         }
     </style>
 </head>
@@ -133,7 +131,7 @@
     </nav>
 
     <section class="hero" id="inicio">
-        <div class="hero-content">
+        <div id="particles-js"></div> <div class="hero-content">
             <h1>IMPÚLSATE</h1>
             <p style="font-size: 32px; font-weight: bold; color: white; margin-bottom: 10px;">Marketing en Lima</p>
             <p>Solicita tu propuesta hoy mismo y empieza a maximizar tu ROI con una agencia de marketing en Lima.</p>
@@ -155,7 +153,6 @@
                     <span>PAQUETE CONTENIDO</span>
                 </div>
             </div>
-
             <div class="bento-item">
                 <img src="proyecto2.jpg" alt="VitalFit Gym">
                 <div class="bento-overlay">
@@ -163,7 +160,6 @@
                     <span>PAQUETE FULL</span>
                 </div>
             </div>
-
             <div class="bento-item">
                 <img src="proyecto3.jpg" alt="GreenRoots Organics">
                 <div class="bento-overlay">
@@ -171,7 +167,6 @@
                     <span>PAQUETE IDENTIDAD</span>
                 </div>
             </div>
-
             <div class="bento-item">
                 <img src="proyecto4.jpg" alt="Lima Dental Care">
                 <div class="bento-overlay">
@@ -179,7 +174,6 @@
                     <span>PÁGINA WEB</span>
                 </div>
             </div>
-
             <div class="bento-item tall">
                 <img src="proyecto5.jpg" alt="UrbanStyle Boutique">
                 <div class="bento-overlay">
@@ -187,7 +181,6 @@
                     <span>PAQUETE CONTENIDO</span>
                 </div>
             </div>
-            
             <div class="bento-item">
                 <img src="proyecto6.jpg" alt="CasaMar Restaurant">
                 <div class="bento-overlay">
@@ -203,5 +196,45 @@
         <a href="https://wa.me/51971050584" class="cta-main" style="margin-top: 10px;">ESCRIBIR POR WHATSAPP</a>
     </section>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#40CFFF" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": false },
+                "size": { "value": 3, "random": true },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#40CFFF",
+                    "opacity": 0.3,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": { "distance": 200, "line_linked": { "opacity": 0.6 } }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
 </body>
 </html>
