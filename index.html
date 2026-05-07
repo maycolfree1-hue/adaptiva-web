@@ -24,12 +24,12 @@
 
         body { background-color: var(--bg); color: white; line-height: 1.6; overflow-x: hidden; }
 
-        /* HEADER OPTIMIZADO */
+        /* HEADER OPTIMIZADO - BARRA MÁS DELGADA */
         nav {
             display: flex; 
             justify-content: space-between; 
             align-items: center;
-            padding: 10px 6%; /* Ajustado para el nuevo tamaño del logo */
+            padding: 5px 6%; /* Padding reducido para un rectángulo más pequeño */
             position: fixed; 
             width: 100%; 
             z-index: 100;
@@ -39,8 +39,9 @@
             transition: 0.3s;
         }
 
+        /* LOGO CON TAMAÑO EQUILIBRADO */
         .logo-img { 
-            height: 150px; /* Tamaño aumentado de 90px a 150px para máxima legibilidad */
+            height: 70px; /* Reducido de 150px a 70px para que se vea estético */
             width: auto; 
             display: block;
             transition: transform 0.3s ease, filter 0.3s ease;
@@ -48,7 +49,7 @@
 
         .logo-img:hover {
             transform: scale(1.05);
-            filter: drop-shadow(0 0 15px var(--accent));
+            filter: drop-shadow(0 0 10px var(--accent));
         }
 
         .nav-links { display: flex; gap: 25px; align-items: center; }
@@ -61,7 +62,7 @@
         .nav-links a:hover { color: var(--accent); }
 
         .btn-nav-ws {
-            background: var(--primary); color: white; padding: 10px 25px;
+            background: var(--primary); color: white; padding: 8px 20px;
             border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 13px;
             transition: 0.3s;
         }
@@ -161,7 +162,7 @@
         /* RESPONSIVE */
         @media (max-width: 900px) {
             nav { padding: 8px 5%; }
-            .logo-img { height: 100px; } /* Grande también en móvil para que se lea */
+            .logo-img { height: 50px; } /* Logo más pequeño en móvil */
             .nav-links { display: none; }
             .about-container { flex-direction: column; }
             .bento-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
